@@ -1,0 +1,15 @@
+PFont f;
+Title page;
+
+void setup() {
+  size(640, 640);
+  f = createFont("Arial", 16, true);
+  page = new Title();
+  
+}
+
+void draw() {
+  background(255);
+  textFont(f, 20);
+  page.show();
+}
