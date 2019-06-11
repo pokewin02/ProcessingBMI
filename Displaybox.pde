@@ -10,29 +10,34 @@ class Displaybox{
    public int TextLength = 0;
 
    Displaybox(){
-   }
+   }  //create default object
      
    Displaybox(int x, int y, int w, int h) {
       X = x; Y = y; W = w; H = h;
    }
    
    void DRAW() {
-      // DRAWING THE BACKGROUND OF TEXTBOX
-
-         fill(Background);
-      
-      
+      // Drawing background of textbox and border thickness
+      fill(Background);
+      strokeWeight(1);
       
       rect(X, Y, W, H);
       
-      // DRAWING THE TEXT ITSELF
+      // Drawing text and deciding font
       textFont(f);
       fill(Foreground);
       textSize(TEXTSIZE);
       text(Text, X + (textWidth("a") / 2), Y + TEXTSIZE);
    }
    void Display(){
+     if (calc.userweight == 0.0){
+       Text = "";
+       button.Clicked = false;
+     }else if (calc.userheight == 0.0){
+       Text = "";
+       button.Clicked = false;
+     }else{
      Text = (str(calc.BMI));
    }
-
+   }
 }
