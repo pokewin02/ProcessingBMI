@@ -11,10 +11,16 @@ ArrayList<Textboxes> textboxes = new ArrayList<Textboxes>();
 
 void setup() {
   size(640, 640);
+  
+  //draws images
   logo = loadImage("24_Hour_Fitness_logo_symbol.png");
   scale = loadImage("BMI_Ranges.jpg");
+  
+  //converts font to processing format
   f = createFont("Arial", 20, true);
   impactf = createFont("Impact", 30, true);
+  
+  //new; creates new object
   page = new Title();
   label = new Labels();
   calc = new Calculation();
@@ -36,6 +42,7 @@ void setup() {
   textboxes.add(userW);
   textboxes.add(userH);
   
+  //declaring new textbox
   db = new Displaybox();
   db.X = 210;
   db.Y = 400;
@@ -43,9 +50,9 @@ void setup() {
   db.H = 35;
 
 }
-
+ //void draw is a looping function
 void draw() {
-  background(173, 216, 230);
+  background(173, 230, 187);
   textFont(f, 20);
   
   //display 24hour fitness logo
@@ -54,6 +61,7 @@ void draw() {
   //display BMI scale
   image(scale, 0, 500);
   
+  //draw text and textboxes
   page.show();
   label.display();
   button.render();
@@ -62,19 +70,21 @@ void draw() {
   for (Textboxes t : textboxes){
     t.DRAW();
   }
-  //if enter or button was clicked, calculate BMI and put in textbox
+  //if enter or button was clicked, calculate BMI and put it in display textbox
     if (button.Clicked){
      calc.calculate();
      db.Display();
 }
 }
-
+//when mouse left click is pressed
 void mousePressed() {
+  //test if button is over button or textbox
    button.over();
    for (Textboxes t : textboxes) {
       t.PRESSED(mouseX, mouseY);
       }
    }
+   
 void keyPressed() {
   //When enter key is pressed, it submits results
     for (Textboxes t : textboxes) {
@@ -85,15 +95,11 @@ void keyPressed() {
     }
 }
 void keyReleased(){
+  //enter key is released
   button.release();
 }
 
 void mouseReleased(){
+  //click on button is released
   button.release();
-}
-
-
-void newStart() {
-  loop();
-
 }
